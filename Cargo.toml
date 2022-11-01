@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "libhello-sys",
+    "libhello",
+    "pylibhello"
+]

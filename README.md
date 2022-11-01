@@ -1,0 +1,1 @@
+sample project to integrate C library to rust and then use it through pyo3 wrapper in python

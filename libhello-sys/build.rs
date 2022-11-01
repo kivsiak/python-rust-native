@@ -4,8 +4,15 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
+    let libdir_path = PathBuf::from("vendor")
+        // Canonicalize the path as `rustc-link-search` requires an absolute
+        // path.
+        .canonicalize()
+        .expect("cannot canonicalize path");
+
+
     // Tell cargo to look for shared libraries in the specified directory
-    println!("cargo:rustc-link-search=/home/vladimir/develop/rogii/geomath-exps/geomath-workspace/libhello-sys/vendor");
+    println!("cargo:rustc-link-search={}", libdir_path.to_str().expect("cannot translate path to string"));
 
     // Tell cargo to tell rustc to link the system bzip2
     // shared library.
